@@ -4,7 +4,6 @@ let formData = {};
 
 const form = document.querySelector('.feedback-form');
 const textarea = document.querySelector('textarea');
-const btnSubmit = document.querySelector('button');
 
 const STORAGE_KEY = 'feedback-form-state';
 

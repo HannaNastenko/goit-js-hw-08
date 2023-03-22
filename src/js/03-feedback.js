@@ -16,17 +16,21 @@ function onFormChange(event) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
 }
 
-if (localStorage.getItem(STORAGE_KEY)) {
-  formData = JSON.parse(localStorage.getItem(STORAGE_KEY));
-  for (let key in formData) {
-    form.elements[key].value = formData[key];
+try {
+  if (localStorage.getItem(STORAGE_KEY)) {
+    formData = JSON.parse(localStorage.getItem(STORAGE_KEY));
+    for (let key in formData) {
+      form.elements[key].value = formData[key];
+    }
   }
+} catch (error) {
+  console.log(error.name);
 }
 
 function onSubmit(event) {
   event.preventDefault();
   console.log(formData);
-
+  formData = {};
   localStorage.clear(STORAGE_KEY);
   event.target.reset();
 }
